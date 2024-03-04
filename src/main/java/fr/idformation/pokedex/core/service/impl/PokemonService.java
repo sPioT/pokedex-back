@@ -36,4 +36,9 @@ public final class PokemonService implements IPokemonService {
 		return pokemonRepo.saveAndFlush(pokemon);
 	}
 
+	@Override
+	public void delete(final Short id) {
+		pokemonRepo.deleteById(id);
+	}
+
 }

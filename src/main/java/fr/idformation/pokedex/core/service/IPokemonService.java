@@ -36,4 +36,11 @@ public interface IPokemonService {
 	 */
 	Pokemon save(Pokemon pokemon);
 
+	/**
+	 * delete a pokemon based on its id.
+	 *
+	 * @param id the id of the pokemon to delete
+	 */
+	void delete(Short id);
+
 }

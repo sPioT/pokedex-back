@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.idformation.pokedex.core.dto.PokemonDTO;
 import fr.idformation.pokedex.core.dto.mapper.PokemonMapper;
 import fr.idformation.pokedex.core.service.IPokemonService;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/pokemon")
@@ -62,6 +65,23 @@ public class PokemonController {
 	@PostMapping("/")
 	public PokemonDTO save(@RequestBody final PokemonDTO pokemon) {
 		return PokemonMapper.pokemonToDto(pokemonService.save(PokemonMapper.dtoToEntity(pokemon)));
+	}
+
+	/**
+	 * Delete a pokemon.
+	 *
+	 * @param id       the ID of the pokemon
+	 * @param response the response used
+	 */
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable("id") final Short id, final HttpServletResponse response) {
+		try {
+			pokemonService.delete(id);
+		} catch (IllegalStateException ise) {
+			response.setStatus(HttpServletResponse.SC_CONFLICT);
+		} catch (EntityNotFoundException enfe) {
+			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+		}
 	}
 
 }
