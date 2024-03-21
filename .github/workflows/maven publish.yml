@@ -1,0 +1,19 @@
+name: jar publish
+
+on:
+  push:
+    branches: ["master"]
+    
+jobs:
+  checkstyle:
+    name: runner / checkstyle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dbelyaev/action-checkstyle@master
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          level: warning
+          checkstyle_config: ./ci/check.xml
+          fail_on_error: true
