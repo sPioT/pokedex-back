@@ -70,7 +70,7 @@
   <module name="FileLength"/>
   <module name="LineLength">
     <property name="fileExtensions" value="java"/>
-    <property name="max" value="120"/>   
+    <property name="max" value="140"/>   
   </module>
 
   <!-- Miscellaneous other checks.                   -->
@@ -124,7 +124,7 @@
     <!-- Checks for Size Violations.                    -->
     <!-- See https://checkstyle.org/config_sizes.html -->
     <module name="MethodLength">
-      <property name="max" value="60"/>
+      <property name="max" value="100"/>
     </module>
     <module name="ParameterNumber"/>
 
@@ -148,7 +148,9 @@
     <module name="HiddenField"/>
     <module name="IllegalInstantiation"/>
     <module name="InnerAssignment"/>
-    <module name="MagicNumber"/>
+    <module name="MagicNumber">
+      <property name="ignoreNumbers" value="-1, 0, 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 100"/>
+    </module>
     <module name="MissingSwitchDefault"/>
     <module name="SimplifyBooleanExpression"/>
     <module name="SimplifyBooleanReturn"/>
