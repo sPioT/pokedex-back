@@ -19,9 +19,6 @@ public class TypeController {
 	@Autowired
 	private ITypeService typeService;
 
-	/**
-	 * @return all types
-	 */
 	@GetMapping("/")
 	public List<TypeDTO> getAll() {
 		return TypeMapper.typesToDtos(typeService.getAll());
