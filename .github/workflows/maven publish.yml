@@ -16,7 +16,7 @@ jobs:
         cache: maven
         
     - name: Build with Maven
-      run: mvn -B -DskipTests verify checkstyle:checkstyle
+      run: mvn verify checkstyle:checkstyle
     - uses: lcollins/checkstyle-github-action@v2.0.0
       with:
         path: '**/checkstyle-result.xml'
