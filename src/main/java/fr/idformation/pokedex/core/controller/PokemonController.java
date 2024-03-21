@@ -25,9 +25,6 @@ public class PokemonController {
 	@Autowired
 	private IPokemonService pokemonService;
 
-	/**
-	 * @return all pokemons
-	 */
 	@GetMapping("/")
 	public List<PokemonDTO> getAll() {
 		return PokemonMapper.pokemonsToDtos(pokemonService.getAllPokemons());
