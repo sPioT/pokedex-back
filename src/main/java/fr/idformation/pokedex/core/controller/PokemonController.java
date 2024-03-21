@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @RequestMapping("/pokemon")
 public class PokemonController {
 
-	/** pokemon service. */
+	/** pokemon service */
 	@Autowired
 	private IPokemonService pokemonService;
 
