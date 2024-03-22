@@ -98,7 +98,7 @@
 		      <version>4.8.3.0</version>
 		      <configuration>
 				<effort>Max</effort>
-				<threshold>high</threshold>
+				<threshold>medium</threshold>
 		        <xmlOutput>true</xmlOutput>
 		        <failOnError>false</failOnError>
 		      </configuration>
