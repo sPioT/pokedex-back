@@ -17,7 +17,7 @@ public class PokemonMapper {
 	public static List<PokemonDTO> pokemonsToDtos(final List<Pokemon> pokemons) {
 		List<PokemonDTO> dtos = null;
 
-		if (pokemons != null) {
+		if ((pokemons != null)) {
 			dtos = new ArrayList<>();
 
 			for (Pokemon pokemon : pokemons) {
@@ -65,7 +65,7 @@ public class PokemonMapper {
 	 * @param dto the dto used as a source
 	 * @return a Pokemon filled with datas from dto
 	 */
-	public static Pokemon dtoToEntity(final PokemonDTO dto) {
+	public static Pokemon dtoToEntity(PokemonDTO dto) {
 		Pokemon entity = null;
 
 		if (dto != null) {
@@ -80,9 +80,14 @@ public class PokemonMapper {
 					entity.addType(new Type(id));
 				}
 			}
+
 		}
 
 		return entity;
+	}
+
+	public Boolean booleanMethod() {
+		return null;
 	}
 
 }

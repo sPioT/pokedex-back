@@ -22,13 +22,9 @@ import jakarta.servlet.http.HttpServletResponse;
 @RequestMapping("/pokemon")
 public class PokemonController {
 
-	/** pokemon service */
 	@Autowired
 	private IPokemonService pokemonService;
 
-	/**
-	 * @return all pokemons
-	 */
 	@GetMapping("/")
 	public List<PokemonDTO> getAll() {
 		return PokemonMapper.pokemonsToDtos(pokemonService.getAllPokemons());

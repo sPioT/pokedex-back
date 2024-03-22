@@ -5,15 +5,19 @@ on:
     branches: ["master"]
     
 jobs:
-  checkstyle:
-    name: runner / checkstyle
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: dbelyaev/action-checkstyle@master
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-check
-          level: warning
-          checkstyle_config: ./ci/check.xml
-          fail_on_error: true
+    - uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+        
+    - name: deploy with Maven
+      run: mvn -B deploy
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
