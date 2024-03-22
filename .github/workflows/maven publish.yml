@@ -1,6 +1,8 @@
 name: jar publish
 
-on: pull_request
+on:
+  push:
+    branches: ["master"]
     
 jobs:
   build:
@@ -15,20 +17,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
         
-    - name: Checkstyle with Maven
-      run: mvn checkstyle:check
-    - uses: lcollins/checkstyle-github-action@v2.0.0
-      with:
-        path: '**/checkstyle-result.xml'
-        
-    - name: PMD with Maven
-      run: mvn pmd:pmd
-    - uses: lcollins/pmd-github-action@v2.0.0
-      with:
-        path: '**/pmd.xml'
-        
-    - name: Spotbugs with Maven
-      run: mvn -DskipTests verify spotbugs:spotbugs
-    - uses: lcollins/spotbugs-github-action@v2.0.0
-      with:
-        path: '**/spotbugsXml.xml'
+    - name: deploy with Maven
+      run: mvn -B deploy
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
