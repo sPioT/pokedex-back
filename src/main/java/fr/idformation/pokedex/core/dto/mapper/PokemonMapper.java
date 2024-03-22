@@ -65,7 +65,7 @@ public class PokemonMapper {
 	 * @param dto the dto used as a source
 	 * @return a Pokemon filled with datas from dto
 	 */
-	public static Pokemon dtoToEntity(final PokemonDTO dto) {
+	public static Pokemon dtoToEntity(PokemonDTO dto) {
 		Pokemon entity = null;
 
 		if (dto != null) {

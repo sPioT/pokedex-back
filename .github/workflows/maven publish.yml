@@ -26,3 +26,9 @@ jobs:
     - uses: lcollins/pmd-github-action@v2.0.0
       with:
         path: '**/pmd.xml'
+        
+    - name: Spotbugs with Maven
+      run: mvn spotbugs:spotbugs
+    - uses: lcollins/spotbugs-github-action@v2.0.0
+      with:
+        path: '**/spotbugsXml.xml'
