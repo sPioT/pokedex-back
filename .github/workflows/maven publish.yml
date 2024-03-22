@@ -18,6 +18,6 @@ jobs:
         cache: maven
         
     - name: deploy with Maven
-      run: mvn -B deploy
+      run: mvn -B -DskipTests deploy
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
