@@ -9,6 +9,8 @@ import fr.idformation.pokedex.core.dto.PokemonDTO;
 
 public class PokemonMapper {
 
+	private int abc;
+
 	/**
 	 *
 	 * @param pokemons a List of Pokemon
@@ -80,6 +82,7 @@ public class PokemonMapper {
 					entity.addType(new Type(id));
 				}
 			}
+
 		}
 
 		return entity;
